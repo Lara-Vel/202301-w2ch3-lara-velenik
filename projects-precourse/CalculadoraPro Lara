@@ -1,0 +1,49 @@
+function calculatorPro() {
+  let value1;
+  let newValue;
+  let values = [];
+
+  value1 = prompt("¡Bienvenido/a! Introduzca el primer valor: ");
+  if (value1 != null) {
+    if (value1 === "" || isNaN(value1)) {
+      alert("El valor introducido es incorrecto, vuelva a introducir los números");
+    } else {
+      values.push(Number(value1));
+    }
+  }
+
+  do {
+    newValue = prompt("Introduzca el resto de valores que desea calcular y pulse cancelar cuando haya terminado para ver el resultado: ");
+    if (newValue != null) {
+      if (newValue === "" || isNaN(newValue)) {
+        alert("El valor introducido es incorrecto, vuelva a introducir los números");
+      } else {
+        values.push(Number(newValue));
+      }
+    }
+  } while (newValue !== null);
+
+  if (values.length == 1) {
+    console.log("La raíz cuadrada de " + values + " es " + Math.sqrt(values).toFixed(3));
+  } else {
+    console.log("Los números introducidos son " + values);
+    
+      sum = values.reduce((counter, item) => counter + item, 0);
+      subtract = values.reduce((counter, item) => counter - item);
+      multiplication = values.reduce((counter, item) => counter * item, 1);
+      division = values.reduce((counter, item) => counter / item);
+    
+    console.log("El resultado de la suma es " + sum);
+    console.log("El resultado de la resta es " + subtract);
+    console.log("El resultado de la multiplicación es " + multiplication.toFixed(3));
+    console.log("El resultado de la división es " + division.toFixed(3));
+  }
+
+  const anotherCalculation = confirm("¿Desea volver a realizar otra operación?");
+  if (anotherCalculation === true) {
+    calculatorPro();
+  } else {
+    alert("¡Gracias y hasta pronto!");
+  }
+}
+calculatorPro();

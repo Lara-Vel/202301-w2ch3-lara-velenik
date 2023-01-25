@@ -1,0 +1,107 @@
+html{
+font-family: Arial, Helvetica, sans-serif;
+}
+
+body{
+    background: -moz-linear-gradient(left,  #f9b1e2 1%, #f9f9a9 51%, #65d3bf 100%); /* FF3.6-15 */
+	background: -webkit-linear-gradient(left,  #f9b1e2 1%,#f9f9a9 51%,#65d3bf 100%); /* Chrome10-25,Safari5.1-6 */
+	background: linear-gradient(to right,  #f9b1e2 1%,#f9f9a9 51%,#65d3bf 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+}
+
+*{
+    box-sizing: border-box;
+    padding: 7px;
+    margin: 0;
+}
+
+.container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    padding: 15px;
+}
+
+.calculator{
+    
+    display: flex;
+    flex-direction: column;
+    width: 500px;
+    font-size: 2rem;
+    border: 1px solid grey;
+    padding: inherit;
+    padding-top: 38px;
+}
+
+.display{
+    
+    padding: 25px 15px;
+    width: 97%;
+    text-align: right;
+    border: 1px solid grey;
+    overflow-x: auto;
+    font-size: 100%;
+    position: relative;
+    right: -7px;
+    top: 8px; 
+}
+
+.all-buttons{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.keypad-button{
+
+    width: 25%;
+    padding: 15px 0;
+    text-align: center;
+    cursor: pointer;
+    background-color: white;
+    border: 1px solid grey; 
+}
+
+.keypad-button:hover{
+    filter: brightness(80%);
+    transition: filter .25s;
+}
+
+.keypad-button:nth-child(1){
+    width: 50%;
+}
+
+.keypad-button:nth-child(16){
+    width: 75%;
+   background-color: #e8cbf6;
+}
+
+.keypad-button:nth-child(3){
+background-color: rgb(204, 245, 164);
+}
+
+.keypad-button:nth-child(7){
+    background-color: rgb(184, 237, 160);  
+}
+
+.keypad-button:nth-child(11){
+    background-color: rgb(160, 227, 165);
+}
+
+.keypad-button:nth-child(15){
+    background-color:rgb(161, 228, 208);
+}
+
+.keypad-button:nth-child(17){
+    background-color: rgb(183, 224, 233);
+}
+
+.signature{
+    color: rgb(82, 80, 80);
+    font-size: 0.75rem;
+    text-align: right;
+    position: relative;
+    top: 6px;
+    right: -337px;
+    z-index: -1;
+}
