@@ -599,25 +599,29 @@ let correctAnswers = 0;
 let wrongAnswers = 0;
 let allQuestions = [questionsOne, questionsTwo, questionsThree];
 
-
 const welcome = () => {
-  userName = prompt(`¡Bienvenido/a a Pasapalabra! ¿Cuál es su nombre?`);
+  let userName = prompt(`¡Bienvenido/a a Pasapalabra! ¿Cuál es su nombre?`);
 
   if (Number(userName) || userName === "" || userName === null) {
     alert(`Por favor introduzca un nombre válido.`);
     welcome();
   } else {
-    alert(`¡Hola ${userName[0].toUpperCase() + userName.substring(1)}!, \n\nEstas son las reglas del juego: \n- Ganarás 1 punto por cada palabra que aciertes.\n- Si no sabes la respuesta, escribe "pasapalabra".\n- Si quieres cancelar el juego en cualquier momento, escribe "end". \n\n¡Que empiece el juego!`);
+    alert(
+      `¡Hola ${
+        userName[0].toUpperCase() + userName.substring(1)
+      }!, \n\nEstas son las reglas del juego: \n- Ganarás 1 punto por cada palabra que aciertes.\n- Si no sabes la respuesta, escribe "pasapalabra".\n- Si quieres cancelar el juego en cualquier momento, escribe "end". \n\n¡Que empiece el juego!`
+    );
   }
-}
+};
 
 const playPasapalabra = () => {
-  randomQuestions = allQuestions[Math.floor(Math.random() * allQuestions.length)];
+  let randomQuestions =
+    allQuestions[Math.floor(Math.random() * allQuestions.length)];
 
   do {
     for (let i = 0; i < randomQuestions.length; i++) {
       if (randomQuestions[i].status === 0) {
-        reply = prompt(randomQuestions[i].question);
+        let reply = prompt(randomQuestions[i].question);
         if (reply.toLowerCase() === randomQuestions[i].answer) {
           randomQuestions[i].status = 1;
           alert("¡¡¡La respuesta es correcta!!! Has ganado 1 punto.");
@@ -630,16 +634,22 @@ const playPasapalabra = () => {
           return;
         } else {
           randomQuestions[i].status = 2;
-          alert(`Respuesta incorrecta... La respuesta era: ${randomQuestions[i].answer}.`);
+          alert(
+            `Respuesta incorrecta... La respuesta era: ${randomQuestions[i].answer}.`
+          );
           wrongAnswers++;
         }
       }
     }
   } while (randomQuestions.some((checkStatus) => checkStatus.status === 0));
-  if (randomQuestions.some((checkStatus) => checkStatus.status === 1 || checkStatus.status === 2)) {
+  if (
+    randomQuestions.some(
+      (checkStatus) => checkStatus.status === 1 || checkStatus.status === 2
+    )
+  ) {
     showRanking();
   }
-}
+};
 
 const playAgain = () => {
   anotherGame = confirm("¿Te gustaría jugar otra partida?");
@@ -648,11 +658,13 @@ const playAgain = () => {
     clearVariables();
     startTheGame();
   } else {
-    alert(`¡Hasta la próxima ${userName[0].toUpperCase() + userName.substring(1)}!`);
+    alert(
+      `¡Hasta la próxima ${userName[0].toUpperCase() + userName.substring(1)}!`
+    );
     console.clear();
     clearVariables();
   }
-}
+};
 
 const showPoints = () => {
   console.log("A continuación te mostramos tu puntuación:");
@@ -660,7 +672,7 @@ const showPoints = () => {
   console.log(`Has fallado ${wrongAnswers} pregunta/as.`);
 
   playAgain();
-}
+};
 
 const showRanking = () => {
   console.log("A continuación te mostramos tu puntuación:");
@@ -672,23 +684,26 @@ const showRanking = () => {
     { name: "Jugador B", points: 22 },
     { name: "Jugador C", points: 18 },
     { name: "Jugador D", points: 9 },
-    {name: `${userName[0].toUpperCase() + userName.substring(1)}`,points: Number(`${correctAnswers}`)},
+    {
+      name: `${userName[0].toUpperCase() + userName.substring(1)}`,
+      points: Number(`${correctAnswers}`),
+    },
   ];
 
   ranking.sort((a, b) => b.points - a.points);
   console.table(ranking);
   playAgain();
-}
+};
 
 const clearVariables = () => {
   correctAnswers = 0;
   wrongAnswers = 0;
   allQuestions = [questionsOne, questionsTwo, questionsThree];
-}
+};
 
 const startTheGame = () => {
   welcome();
   playPasapalabra();
-}
+};
 
 startTheGame();
